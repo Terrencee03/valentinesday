@@ -92,7 +92,7 @@ function fullReset() {
 
 // --- TIMER LOGIC ---
 function initializeTimer() {
-    const startDate = new Date(2023, 0, 26, 0, 0).getTime(); 
+    const startDate = new Date(2026, 0, 23, 0, 0).getTime(); 
 
     function updateTimer() {
         const now = new Date().getTime();
