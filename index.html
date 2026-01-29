@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
+</head>
+<body>
+
+    <div id="game-container">
+        
+        <div id="game-step-1" class="game-step active">
+            <div class="game-content">
+                <h2>🌹 今晚的第一站</h2>
+                <div class="hint-box">
+                    <span style="font-size: 4rem;">🍽️</span>
+                    <p>带你去吃好吃的...</p>
+                    <p class="small-hint">(点击下面揭晓)</p>
+                </div>
+                <button class="game-btn" onclick="nextGameStep(2)">我们吃饱啦 (Next)</button>
+            </div>
+        </div>
+
+        <div id="game-step-2" class="game-step">
+            <div class="game-content">
+                <h2>😋 吃饱了吗？</h2>
+                <p>给刚才的晚餐打个分吧！</p>
+                
+                <div class="star-rating">
+                    <span onclick="rateStar(1)">⭐</span>
+                    <span onclick="rateStar(2)">⭐</span>
+                    <span onclick="rateStar(3)">⭐</span>
+                    <span onclick="rateStar(4)">⭐</span>
+                    <span onclick="rateStar(5)">⭐</span>
+                </div>
+                <p id="rating-text">点击星星...</p>
+
+                <button id="btn-step-2" class="game-btn hidden" onclick="nextGameStep(3)">继续 (Proceed)</button>
+            </div>
+        </div>
+
+        <div id="game-step-3" class="game-step">
+            <div class="game-content">
+                <h2>🔒 解锁最后礼物</h2>
+                <p>完成以下 3 个任务才能通关：</p>
+                
+                <div class="task-list">
+                    <div class="task-item" onclick="toggleTask(this)">
+                        <div class="checkbox"></div>
+                        <span>1. 紧紧牵住我的手 🤝</span>
+                    </div>
+                    <div class="task-item" onclick="toggleTask(this)">
+                        <div class="checkbox"></div>
+                        <span>2. 现在拍一张合照 📸</span>
+                    </div>
+                    <div class="task-item" onclick="toggleTask(this)">
+                        <div class="checkbox"></div>
+                        <span>3. 大声说出我们几时在一起 📢</span>
+                    </div>
+                </div>
+
+                <button id="btn-step-3" class="game-btn disabled" onclick="nextGameStep(4)">任务完成！</button>
+            </div>
+        </div>
+
+        <div id="game-step-4" class="game-step">
+            <div class="game-content">
+                <div class="flower-animation">💐</div>
+                <h2>恭喜收到一束花！</h2>
+                <p>这是给最美的张晓晴。</p>
+                <br>
+                <p style="font-size: 0.9rem; color: #666;">(收下花后点击下方)</p>
+                
+                <button class="game-btn highlight-btn" onclick="finishGame()">🎁 打开你的网站</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="main-content">
+
+        <header class="hero">
+            <div class="hero-content">
+                <h1>
+                    <span class="greeting">情人节快乐！</span>
+                    <span class="name">张晓晴 <span class="heart">❤️</span></span>
+                </h1>
+                <p>You’re my heart choosing the same person every single day.</p>
+            </div>
+        </header>
+
+        <section class="timer-section">
+            <h2>我们已经在一起:</h2>
+            <div id="timer">Calculating...</div>
+        </section>
+
+        <section class="content-section">
+            <h2>我们的旅程</h2>
+            <p class="instruction">(点击信封打开)</p>
+            
+            <div class="letter-container" onclick="openLetter(this)">
+                <div class="letter-card">
+                    <div class="letter-cover">
+                        <h3>相遇的故事</h3>
+                        <div class="seal">💌</div>
+                        <p class="hint">点击打开</p>
+                    </div>
+                    <div class="letter-content">
+                        <h3>相遇的故事</h3>
+                        <p>Hello, 张晓晴，Cingcing。</p>
+                        <br>
+                        <p>其实故事的开头，不仅仅是那场球赛，而是那两条 <strong>Apollo</strong>。 那天我肚子饿，你递给我的那份善意，让我瞬间 Crush 了，是你让我相信了一见钟情。</p>
+                        <br>
+                        <p>但说实话，那时候我真的犹豫过要不要追你。因为你太美了，美到让我觉得非常有压力。但我还是硬着头皮、鼓起勇气，约了你去跨年。那一刻我觉得自己真的有点‘不知天高地厚’。</p>
+                        <br>
+                        <p><strong>1月1号</strong>，我忍不住跟你表明了心意，结果... Oopss，你没答应。但这并没有劝退我，反而开启了我们那 20天 最特别的‘暧昧期’，也是我最努力的 <strong>Running Man</strong> 时期。</p>
+                        <br>
+                        <p>我还记得那时候为了装酷写给你那张纸条：‘这个是情信，不是告白信 hehe’。其实写下 <strong>Hehe</strong> 的时候，我并没有怕输，也没想过结果会怎样。我心里只有一个念头：不管你是慢节奏还是还没看清真心，我就只想陪着你、照顾你，陪你一起去寻找那个内心的答案。</p>
+                        <br>
+                        <p>因为你身上那种独特的 Vibes 告诉我，值得。哪怕做一根默默陪伴的‘木头’，我也心甘情愿。</p>
+                        <br>
+                        <p>终于，1月20号，我带着花正式告白。然后到了 <strong>1月23号</strong>，我收到了这辈子最好听的一句话。你对我说：<br><em>‘我喜欢说话算数的人，希望开始是你，往后余生还是你。’</em></p>
+                        <br>
+                        <p>那一刻，我知道，Everything was worth it. 我们之间，<strong>Started with Apollo, accompanied by Love, and ended up with Forever.</strong></p>
+                        <br>
+                        <p class="close-hint">(再点一次关闭)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="letter-container" onclick="openLetter(this)">
+                <div class="letter-card">
+                    <div class="letter-cover">
+                        <h3>我的承诺</h3>
+                        <div class="seal">❤️</div>
+                        <p class="hint">点击打开</p>
+                    </div>
+                    <div class="letter-content">
+                        <h3>我的承诺</h3>
+                        <p>在一起后的日子，世界并没有像童话书里写的那样瞬间变得完美，甚至最近还发生了很多意想不到的插曲。被人背刺、被人误解，那些 Drama 就像突如其来的暴雨。</p>
+                        <br>
+                        <p>最让我难受的，不是我自己受了多少委屈，而是听到了那些刺耳的声音，我记得我还在想如果他们说：‘张晓晴值得更好的，他不值得。’ 说实话，那一瞬间，我这个本来就不够完美的‘木头’，真的低沉过。我开始怀疑，是不是那个‘慢节奏’的你，真的需要一个跑得更快的人？我是不是真的不够格站在你身边？</p>
+                        <br>
+                        <p><strong>但是，是你亲手挡住了那些声音。</strong> 我永远记得，你用最坚定的语气说出的那句话： ‘不用找了，因为我已经找到最好的了。’</p>
+                        <br>
+                        <p>宝贝，你知道吗？这句话比我听过的任何一句 ‘I Love You’ 都让我震撼。是你让我明白，真正的‘值得’，不是由别人嘴里定义的，而是由你眼里的光决定的。是你让我从一个只会担心失去的胆小鬼，变成了一个有了底气的男人。</p>
+                        <br>
+                        <p>所以，这就是我给你的 <strong>Lifetime Promise</strong>：既然你让我爱你，那我就用余生每一天做给你看，证明你当初看人的眼光，是绝对正确的。</p>
+                        <br>
+                        <p>未来的路，也许还有很多不确定性，也许还会有别的声音。但请你记住，你可以继续做那个偶尔放空、偶尔大笑、在我这里不用独立的张晓晴。你只管看着前方开车，尽情去感受每一个美好的 Moment。至于看左右、看盲点、挡风雨这种复杂的事，全部交给我。</p>
+                        <br>
+                        <p>不管开心的、不开心的，我一直都会在，不仅仅是身后，而是你伸手就能碰到的旁边。情人节快乐，我的女孩。谢谢你让我相信，我也找到了那个最好的你。 ❤️</p>
+                        <br>
+                        <p class="close-hint">(再点一次关闭)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery">
+            <h2>珍贵的回忆</h2>
+            <p id="mem-instruction" class="instruction">(点击照片查看下一张 📸)</p>
+            
+            <div id="mem-frame" class="photo-frame" onclick="nextMemory()">
+                <img id="mem-img" src="images/FirstImage.jpeg" alt="Memory">
+                <div class="caption">
+                    <h3 id="mem-title">The Beginning</h3>
+                    <p id="mem-desc">第一张找你拍照</p>
+                </div>
+                <div class="tap-hint">Tap to Next ➜</div>
+            </div>
+
+            <div id="mem-grid" class="gallery-grid" style="display: none;">
+                <div class="photo-card"><img src="images/FirstImage.jpeg"><div class="caption"><h3>The Beginning</h3><p>第一张找你拍照</p></div></div>
+                <div class="photo-card"><img src="images/SecondImage.jpeg"><div class="caption"><h3>Unwavering You</h3><p>第一次鼓起勇气，约你跨年的合照</p></div></div>
+                <div class="photo-card"><img src="images/ThirdImage.jpeg"><div class="caption"><h3>Future Road</h3><p>第一次和你在一起后的合照</p></div></div>
+            </div>
+        </section>
+
+        <section class="gallery" style="background-color: #fff5f8;">
+            <h2>牵手瞬间</h2>
+            <p id="hand-instruction" class="instruction">(点击照片查看下一张 🤝)</p>
+
+            <div id="hand-frame" class="photo-frame" onclick="nextHand()">
+                <img id="hand-img" src="images/FirstHold.jpeg" alt="Holding Hands">
+                <div class="caption">
+                    <h3 id="hand-title">第一次牵手</h3>
+                    <p id="hand-desc">心跳加速的那一刻</p>
+                </div>
+                <div class="tap-hint">Tap to Next ➜</div>
+            </div>
+
+            <div id="hand-grid" class="gallery-grid" style="display: none;">
+                <div class="photo-card"><img src="images/FirstHold.jpeg"><div class="caption"><h3>第一次牵手</h3><p>心跳加速的那一刻</p></div></div>
+                <div class="photo-card"><img src="images/SecondHold.jpeg"><div class="caption"><h3>日常温度</h3><p>出门时自然的紧握</p></div></div>
+                <div class="photo-card"><img src="images/ThirdHold.jpeg"><div class="caption"><h3>坚定相伴</h3><p>未来的路也要这样走</p></div></div>
+            </div>
+        </section>
+
+        <section class="gallery">
+            <h2>陪伴与小小约会</h2>
+            <p id="date-instruction" class="instruction">(点击照片查看我们的点点滴滴 🌹)</p>
+
+            <div id="date-frame" class="photo-frame" onclick="nextDate()">
+                <img id="date-img" src="images/firstmeal.jpeg" alt="Date">
+                <div class="caption">
+                    <h3 id="date-title">跨年的第一餐</h3>
+                    <p id="date-desc">勇气的开始</p>
+                </div>
+                <div class="tap-hint">Tap to Next ➜</div>
+            </div>
+
+            <div id="date-grid" class="gallery-grid" style="display: none;">
+                <div class="photo-card"><img src="images/firstmeal.jpeg"><div class="caption"><h3>跨年的第一餐</h3><p>勇气的开始</p></div></div>
+                <div class="photo-card"><img src="images/walk.jpeg"><div class="caption"><h3>背影杀</h3><p>心动得没话说</p></div></div>
+                <div class="photo-card"><img src="images/secondmeal.jpeg"><div class="caption"><h3>第一次单独约会</h3><p>简单的快乐</p></div></div>
+                <div class="photo-card"><img src="images/cantik.jpeg"><div class="caption"><h3>男友视角</h3><p>可爱死了</p></div></div>
+                <div class="photo-card"><img src="images/thirdmeal.jpeg"><div class="caption"><h3>单独约你吃饭</h3><p>因为有你</p></div></div>
+                <div class="photo-card"><img src="images/fourthmeal.jpeg"><div class="caption"><h3>第一次带你从羽毛球练习</h3><p>平淡也浪漫</p></div></div>
+                <div class="photo-card"><img src="images/fifthmeal.jpeg"><div class="caption"><h3>第三次的约会</h3><p>每一个瞬间</p></div></div>
+                <div class="photo-card"><img src="images/sixthmeal.jpeg"><div class="caption"><h3>正式告白的前夕</h3><p>确定你是那个人的瞬间</p></div></div>
+                <div class="photo-card"><img src="images/firstcompetition.jpeg"><div class="caption"><h3>偷偷去支持你比赛</h3><p>我的宝真的很强</p></div></div>
+                <div class="photo-card"><img src="images/badmintonteman.jpeg"><div class="caption"><h3>在一起后第一次跟你打球</h3><p>我们的故事还在继续</p></div></div>
+            </div>
+        </section>
+
+        <section class="reasons-section">
+            <h2>Why I Love You</h2>
+            <p>点击按钮，告诉你原因...</p> 
+            <button id="generate-btn" onclick="generateReason()">为什么是你？❤️</button> 
+            <div id="reason-display" class="reason-text"></div>
+        </section>
+
+        <section class="coupon-section">
+            <h2>恋爱兑换券 ❤️</h2>
+            <p class="instruction">左右滑动，点击兑换！</p>
+            <div class="carousel-container">
+                <button class="nav-btn prev-btn" onclick="moveSlide(-1)">&#10094;</button>
+                <div class="carousel-wrapper">
+                    <div class="coupon-track" id="coupon-track">
+                        <div class="coupon-slide"><div class="coupon" id="c1" onclick="openCouponModal('c1', '🥤 奶茶畅饮券', '随时随地，想喝就喝。')"><div class="coupon-content"><h3>🥤 奶茶畅饮券</h3><p>随时随地，想喝就喝。</p></div><div class="coupon-status">使用</div></div></div>
+                        <div class="coupon-slide"><div class="coupon" id="c2" onclick="openCouponModal('c2', '💆‍♂️ 专属按摩券', '享受15分钟肩颈按摩。')"><div class="coupon-content"><h3>💆‍♂️ 专属按摩券</h3><p>享受15分钟肩颈按摩。</p></div><div class="coupon-status">使用</div></div></div>
+                        <div class="coupon-slide"><div class="coupon" id="c3" onclick="openCouponModal('c3', '🚗 专属司机券', '去哪里我都载你。')"><div class="coupon-content"><h3>🚗 专属司机券</h3><p>去哪里我都载你。</p></div><div class="coupon-status">使用</div></div></div>
+                        <div class="coupon-slide"><div class="coupon" id="c4" onclick="openCouponModal('c4', '🥺 无条件原谅券', '无论我做错什么，这张卡都能救我。')"><div class="coupon-content"><h3>🥺 无条件原谅券</h3><p>一次免死金牌。</p></div><div class="coupon-status">使用</div></div></div>
+                        <div class="coupon-slide"><div class="coupon" id="c5" onclick="openCouponModal('c5', '🍲 大餐一顿券', '带你去吃好吃的，我买单。')"><div class="coupon-content"><h3>🍲 大餐一顿券</h3><p>带你去吃好吃的。</p></div><div class="coupon-status">使用</div></div></div>
+                        <div class="coupon-slide"><div class="coupon" id="c6" onclick="openCouponModal('c6', '🎬 电影之夜券', '陪你看你想看的电影。')"><div class="coupon-content"><h3>🎬 电影之夜券</h3><p>陪你看你想看的电影。</p></div><div class="coupon-status">使用</div></div></div>
+                        <div class="coupon-slide"><div class="coupon" id="c7" onclick="openCouponModal('c7', '🛍️ 回家券', '送你安全到家门口。')"><div class="coupon-content"><h3>🛍️ 回家券</h3><p>送你安全到家门口</p></div><div class="coupon-status">使用</div></div></div>
+                        <div class="coupon-slide"><div class="coupon" id="c8" onclick="openCouponModal('c8', '🧹 家务全包券', '今天你是女王，家务我全包。')"><div class="coupon-content"><h3>🧹 家务全包券</h3><p>今天家务我全包。</p></div><div class="coupon-status">使用</div></div></div>
+                        <div class="coupon-slide"><div class="coupon" id="c9" onclick="openCouponModal('c9', '🛑 停止吵架券', '无论谁对谁错，立刻停止并抱抱。')"><div class="coupon-content"><h3>🛑 停止吵架券</h3><p>立刻停止并抱抱。</p></div><div class="coupon-status">使用</div></div></div>
+                        <div class="coupon-slide"><div class="coupon" id="c10" onclick="openCouponModal('c10', '💨 吹头发服务', '帮你温柔吹干头发。')"><div class="coupon-content"><h3>💨 吹头发服务</h3><p>帮你温柔吹干头发。</p></div><div class="coupon-status">使用</div></div></div>
+                        <div class="coupon-slide"><div class="coupon" id="c11" onclick="openCouponModal('c11', '👸 听话一整天', '今天你说什么就是什么。')"><div class="coupon-content"><h3>👸 听话一整天</h3><p>今天你说什么就是什么。</p></div><div class="coupon-status">使用</div></div></div>
+                        <div class="coupon-slide"><div class="coupon" id="c12" onclick="openCouponModal('c12', '✨ 神秘愿望券', '说出一个愿望，我尽力满足。')"><div class="coupon-content"><h3>✨ 神秘愿望券</h3><p>任何合理愿望。</p></div><div class="coupon-status">使用</div></div></div>
+                    </div>
+                </div>
+                <button class="nav-btn next-btn" onclick="moveSlide(1)">&#10095;</button>
+            </div>
+            
+            <div style="margin-top: 40px;">
+                <button id="reset-btn" onclick="resetCoupons()">↻ 重置所有优惠券</button>
+            </div>
+        </section>
+
+        <footer>
+            <p>Love You So Muchyyy❤️</p>
+            
+            <button onclick="fullReset()" style="margin-top:20px; font-size:0.8rem; background:none; border:1px solid #ccc; color:#888; padding:5px 10px; border-radius:5px; cursor:pointer;">
+                🔄 重置游戏 (测试用)
+            </button>
+        </footer>
+
+        <div id="coupon-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeCouponModal()">&times;</span>
+                <h2 id="modal-title">Title</h2>
+                <p id="modal-desc">Description</p>
+                <div class="modal-actions">
+                    <button id="redeem-btn" onclick="confirmRedeem()">立即兑换 ❤️</button>
+                    <button id="cancel-btn" onclick="closeCouponModal()">取消</button>
+                </div>
+            </div>
+        </div>
+    
+    </div> <script src="script.js"></script>
+</body>
+</html>
